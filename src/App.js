@@ -106,8 +106,21 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <h2>Favorite Movies</h2>
+<ListUsersMovies profiles={profiles} users={users} movies={movies} />
       </div>
     );
+  }
+}
+
+class ListUsersMovies extends Component {
+  render() {
+    return(
+      <ul >
+      {
+        Object.entries(this.props.users).map(([key, value])=><li key={value.id}>{`${value.name}'s favorite movie is ${this.props.movies[this.props.profiles.find(profile=>profile.userID==value.id).favoriteMovieID].name}.`} </li>)
+      }
+      </ul>
+   	);
   }
 }
 
